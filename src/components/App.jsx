@@ -9,6 +9,7 @@ import ApiTest from './ApiTest'
 import Footer from './Footer'
 import NewRecipe from './NewRecipe'
 import EditRecipe from './EditRecipe'
+import AverageRatings from './AverageRatings'
 
 export default function App() {
   // stores all recipes
@@ -56,6 +57,7 @@ export default function App() {
       <Route path='/recipe/add' element={<NewRecipe loggedInUser={loggedInUser} recipeList={recipeList} setRecipeList={setRecipeList}/>} />
       <Route path='/recipe/:recipeId/edit' element={<EditRecipe recipeList={recipeList} setRecipeList={setRecipeList}/>} />
       <Route path='/apitest' element={<ApiTest recipeList={recipeList}/>} />
+      <Route path='/testfavs' element={<AverageRatings recipeList={recipeList} />}/>
       <Route path='*' element={<div className='container'><h3>Page not found!</h3></div>} />
     </Routes>
     <Footer />
