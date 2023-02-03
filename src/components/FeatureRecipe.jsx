@@ -5,7 +5,7 @@ export default ({ recipeList, setRecipeList }) => {
     //highest rated recipe for featured recipe and image url
 	let highest_rated_recipe = recipeList[2]
 
-
+    console.log(highest_rated_recipe)
     const featureRecipeList = JSON.parse(JSON.stringify(recipeList))
     let feature_recipe = ""
     for (let i = 0; i < featureRecipeList.length; i++) {
@@ -20,7 +20,7 @@ export default ({ recipeList, setRecipeList }) => {
     const featureOptions = featureRecipeList.filter((recipe) => recipe.average > 4.2)
 
     let featureRecipe = featureOptions[Math.floor(Math.random()*featureOptions.length)]
-    console.log(recipeList)
+    // console.log(recipeList)
     // console.log(featureRecipe) }
 
 
