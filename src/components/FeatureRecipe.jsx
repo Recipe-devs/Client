@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 export default ({ recipeList, setRecipeList }) => {
+    preventDefault()
     //highest rated recipe for featured recipe and image url
 	let highest_rated_recipe = recipeList[2]
 
