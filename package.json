@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "localbuild": "vite build --mode=production",
+    "build": "vite build --mode=production",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
-    "start": "vite preview"
+    "start": "vite preview --host"
   },
   "dependencies": {
     "react": "^18.2.0",
