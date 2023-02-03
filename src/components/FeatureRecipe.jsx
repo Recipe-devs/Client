@@ -5,7 +5,9 @@ export default ({ recipeList, setRecipeList }) => {
     //highest rated recipe for featured recipe and image url
 	let highest_rated_recipe = recipeList[2]
 
-    console.log(highest_rated_recipe)
+    // console.log(highest_rated_recipe)
+    console.log(recipeList)
+    console.log(recipeList.length)
     const featureRecipeList = JSON.parse(JSON.stringify(recipeList))
     let feature_recipe = ""
     for (let i = 0; i < featureRecipeList.length; i++) {
