@@ -15,12 +15,9 @@ const ProfileRecipes = () => {
 
 
 
-
-	
-
 	const sendData = async (recipeId) => {
 	try {
-		const response = await fetch(`http://localhost:8080/recipes/${recipeId}/`, 
+		const response = await fetch(`https://server-production-6a0e.up.railway.app/recipes/${recipeId}/`, 
 		{
 			method: "DELETE",
 			headers: {"Content-Type": "application/json"}
@@ -60,35 +57,11 @@ const ProfileRecipes = () => {
 					</div>
 				</div>
 
-
-
-
-
-
-
 			)
 		}
 	})
 
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	return (

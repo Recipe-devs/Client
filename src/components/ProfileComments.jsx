@@ -10,11 +10,12 @@ const ProfileComments = () => {
 	const handleClick = (commentId, recipeId) => {
 	sendData(commentId, recipeId)
 	setRecipeList(recipeList.filter((recipe) => recipe._id !== recipeId))
+	alert("Comment Deleted!")
 	}
 
 	const sendData = async (commentId, recipeId) => {
 	try {
-		const response = await fetch(`http://localhost:8080/recipes/${recipeId}/comments/${commentId}`, 
+		const response = await fetch(`https://server-production-6a0e.up.railway.app/recipes/${recipeId}/comments/${commentId}`, 
 		{
 			method: "DELETE",
 			headers: {"Content-Type": "application/json"}

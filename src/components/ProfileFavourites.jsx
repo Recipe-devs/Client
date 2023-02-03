@@ -14,6 +14,7 @@ const ProfileFavourites = () => {
     const updatedFavourites = loggedInUser.favourites.filter((recipe) => recipe.id !== recipeId)
     setLoggedInUser({ ...loggedInUser, favourites: updatedFavourites })
     sendData(extractIds(updatedFavourites))
+	alert("Removed From Favourites!")
   }
 
 

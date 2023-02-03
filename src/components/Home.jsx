@@ -97,7 +97,7 @@ console.log(setSearchInput)
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
 					</div>
 					<div className="carousel-inner">
-						<CarouselLink active="active" searchPrefill="chicken" carouselText="CHICKEN" imgURL="https://recipe-realm-images.s3.amazonaws.com/uploads/barbecue-g82e9c37de_1280.jpg" />
+						<CarouselLink active="active" searchPrefill="chicken" carouselText="CHICKEN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/a_90/v1675429266/Recipe%20Photos/pexels-photo-6210959_dmrbqu.jpg" />
 						<CarouselLink searchPrefill="mexican" carouselText="MEXICAN" imgURL="https://recipe-realm-images.s3.amazonaws.com/uploads/mexican-gbb5482fa4_1280.jpg" />
 						<CarouselLink searchPrefill="indian" carouselText="INDIAN" imgURL="https://recipe-realm-images.s3.amazonaws.com/uploads/biryani-g849e363c0_1280.jpg" />
 						<CarouselLink searchPrefill="salad" carouselText="SALAD" imgURL="https://recipe-realm-images.s3.amazonaws.com/uploads/salad-g732cb055a_1280.jpg" />

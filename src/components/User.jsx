@@ -22,16 +22,7 @@ const User = () => {
 	} else {
 		nav.classList.remove("sticky");
    }
-}
-
-
-
-
-
-
-
-
-
+	}
 
 
 	return (
@@ -51,10 +42,10 @@ const User = () => {
 
 			<div id="commentsAnchor" style={{padding: "20px"}}></div>
 			<div className="container text-center">
-				<ProfileComments />
+				<ProfileFavourites />
 				<ProfileRecipes />
+				<ProfileComments />
 				<ProfileRatings />
-				<ProfileFavourites  />
 			</div>
 		</div>
 	)
