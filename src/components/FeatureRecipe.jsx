@@ -2,9 +2,13 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 export default ({ recipeList, setRecipeList }) => {
-    preventDefault()
+    // preventDefault()
     //highest rated recipe for featured recipe and image url
-	let highest_rated_recipe = recipeList[2]
+	if(recipeList.length === 0) {
+        return (<div>Hello</div>)
+        "Loading..." //or you can have some loader component here
+      }
+    let highest_rated_recipe = recipeList[2]
 
     // console.log(highest_rated_recipe)
     console.log(recipeList)
@@ -33,7 +37,7 @@ export default ({ recipeList, setRecipeList }) => {
         <div className="row d-flex align-items-center m-5 featured-recipe">
             <div className="col-lg-6 ">
                 <Link to={`/recipe/${highest_rated_recipe.id}`}>
-                <img src={highest_rated_recipe.image} className="img-fluid rounded featured-img" alt="place holder" />
+                <img src={featureRecipe.image} className="img-fluid rounded featured-img" alt="place holder" />
                 </Link>
                 </div>
                 <div className="col-lg-6">
