@@ -13,8 +13,6 @@ const ProfileRecipes = () => {
 		alert("Recipe deleted!")
 	}
 
-
-
 	const sendData = async (recipeId) => {
 	try {
 		const response = await fetch(`https://server-production-6a0e.up.railway.app/recipes/${recipeId}/`, 
@@ -28,7 +26,6 @@ const ProfileRecipes = () => {
 		console.error(error)
 	}}
  
-
 	const recipes = recipeList.map((recipe, index) => {
 		if (recipe.author.username === loggedInUser.username) {
 			return (
@@ -56,18 +53,14 @@ const ProfileRecipes = () => {
 						</div>
 					</div>
 				</div>
-
 			)
 		}
 	})
 
-	
-
-
 	return (
 	<>
 		<div id="recipesAnchor" style={{padding: "30px"}}></div>
-	  	<div className="h-100 d-flex flex-column align-items-center justify-content-center mx-5">
+	  	<div className="h-100 d-flex flex-column align-items-center justify-content-center">
 			<h1>Submitted Recipes</h1>
 			{recipes}
 		</div>

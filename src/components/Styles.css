@@ -17,38 +17,27 @@
 
 
 
-/* 
-div
-{
-    border: 1px solid red;
-} */
+.d-flex.flex-column.align-items-center{
+   
+    margin-top: 75px !important;
+    /* background-color: var(--quaternary-color); */
+    
+    @media (max-width: 692px) {
+    
+        margin: 0 90 0 0 !important;
+    }
 
 
 
 
-/* ------------------------ carousel ------------------------*/
 
-
-.carousel-item {
-    height: 40vh !important;
-} 
-
-.carousel-link{
-    color: black !important;
-    text-decoration: none;
-    font-weight: bold;
 }
-
-  
-
 
 
 
 
 
 /* ------------------------ Typography ------------------------*/
-
-
 
 .display-1 {
     color: var(--primary-color);
@@ -63,6 +52,212 @@ div
 h1{
     color: var(--secondary-color);
 }
+
+
+
+
+
+/* ----------------------------------------------- Landing Page -----------------------------------------------*/
+
+@media (min-width: 992px) {
+    /* styles to be applied when screen width is less than or equal to 992px */
+
+
+   
+}
+
+
+
+/* ------------------------ hero ------------------------*/
+/* image */
+.backdrop{
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    background-clip: border-box;
+}
+
+/* Div ontop of backdrop */
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.hero > .display-1{
+    font-weight: bold !important;
+}
+.hero > .display-2{
+    font-weight: bold !important;
+}
+
+
+
+
+
+
+/* ------------------------ featured recipe ------------------------*/
+
+
+
+
+
+.featured-recipe{
+    background-color: var(--tertiary-color);
+}
+
+/* image */
+.featured-img{
+    object-fit: cover;
+    height: 40vh;
+    width: 100%;
+}
+
+
+
+a.featured-recipe-link{
+    color: black;
+    text-decoration: none;
+ }
+
+a.featured-recipe-link:hover{
+    color: black;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+a.featured-recipe-link:visited{
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+
+/* ------------------------ carousel ------------------------*/
+.carousel-item {
+    height: 40vh !important;
+} 
+
+.carousel-link{
+    color: black !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.carousel-control-prev, .carousel-control-next {
+    /*size */
+    height: 40vh;
+    width: 5vw;
+    min-width: 2rem;
+    /*color */
+    background: #5e5e5e none repeat scroll 0 0;
+    opacity: 0.5;
+    /*shape border*/
+    border: 0px solid #1b1b1b;
+    border-radius: 0%; /*zero for square */
+    /*symbol */
+    color: #fff;
+    line-height: 70px;
+    /*vertical position */
+    /* top: 50%;
+    margin: 0 3vw 0; */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------- Search page  -----------------------------------------------*/
+/* Hover effect */
+.figurediv {
+    transition: transform 2s;
+}
+.figurediv:hover  {
+    transform: scale(1.02);
+}
+  
+
+
+@media (min-width: 992px) {
+    /* styles to be applied when screen width is less than or equal to 992px */
+
+
+   
+}
+
+/* 
+.flex-column.align-items-center.justify-content-center{
+    background-color: aqua;
+
+} */
+
+
+
+
+
+
+/* 
+
+h1{
+    color: red;
+}
+
+h2{
+    color: red;
+}
+.row{
+    margin: 0;
+    padding: 0;
+    border: red 1px solid;
+}
+
+
+h1::before {
+    content: "pseduoelement test";
+    font-size: 20px;
+    color: red;
+  }
+ */
+
+
+
+
+
+/* ----------------------------------------------- Recipe page  -----------------------------------------------*/
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------- User page  -----------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -95,23 +290,9 @@ p::before {content: "P..."}
 
 
 /* ------------------------ Nav Bar ------------------------*/
-/* large screen navbar
-/* default properties */
-/* .navbar.large, .navbar.compact {
-    background-color: rgba(250, 250, 250, 0)  !important;
-    transition: box-shadow 0.5s ease-out ;
-    transition: background-color 0.5s ease-out;
-} */
-/* scrolled properties */
-/* .navbar.large.scrolled, .navbar.compact {
-    background-color: var(--secondary-color)  !important;
-    box-shadow: rgba(0,0,0,.1) 0px 5px 10px ;
-}  */
-
-
 
 @media (min-width: 992px) {
-    /* styles to be applied when screen width is less than or equal to 768px */
+    /* styles to be applied when screen width is less than or equal to 992px */
     .navbar {
         background-color: rgba(250, 250, 250, 0)  !important;
         transition: box-shadow 0.5s ease-out ;
@@ -122,20 +303,6 @@ p::before {content: "P..."}
         box-shadow: rgba(0,0,0,.1) 0px 5px 10px ;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* unclicked link text colour */
@@ -187,132 +354,3 @@ p::before {content: "P..."}
 
 
 
-
-/* ------------------------ Landing Page ------------------------*/
-/* iamge */
-.backdrop{
-    object-fit: cover;
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    z-index: -1;
-    background-clip: border-box;
-}
-
-
-/* Div ontop of backdrop */
-.hero{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.hero > .display-1{
-    font-weight: bold !important;
-}
-.hero > .display-2{
-    font-weight: bold !important;
-}
-
-
-
-
-/* featured recipe */
-.featured-recipe{
-    background-color: var(--tertiary-color);
-}
-
-/* image */
-.featured-img{
-    object-fit: cover;
-    height: 40vh;
-    width: 100%;
-}
-
-
-
-/* Carousel */
-.carousel-control-prev, .carousel-control-next {
-    /*size */
-    height: 40vh;
-    width: 5vw;
-    min-width: 2rem;
-    /*color */
-    background: #5e5e5e none repeat scroll 0 0;
-    opacity: 0.5;
-    /*shape border*/
-    border: 0px solid #1b1b1b;
-    border-radius: 0%; /*zero for square */
-    /*symbol */
-    color: #fff;
-    line-height: 70px;
-    /*vertical position */
-    /* top: 50%;
-    margin: 0 3vw 0; */
-}
-
-
-
-
-
-
-
-
-
-/* ------------------------ Landing Page ------------------------*/
-Search page
-.figurediv {
-    transition: transform 2s;
-  }
-  
-  .figurediv:hover  {
-    transform: scale(1.02);
-  }
-  
-
-
-
-/* 
-
-h1{
-    color: red;
-}
-
-h2{
-    color: red;
-}
-.row{
-    margin: 0;
-    padding: 0;
-    border: red 1px solid;
-}
-
-
-h1::before {
-    content: "pseduoelement test";
-    font-size: 20px;
-    color: red;
-  }
- */
-
-
- a.featured-recipe-link{
-    color: black;
-    text-decoration: none;
- }
-
-a.featured-recipe-link:hover{
-    color: black;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-
-
-}
-
-a.featured-recipe-link:visited{
-    color: black;
-    text-decoration: none;
-}

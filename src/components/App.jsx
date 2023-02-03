@@ -5,7 +5,7 @@ import User from './User'
 import Recipe from './Recipe'
 import Navbar from './Navbar'
 import Search from './Search'
-import ApiTest from './ApiTest'
+
 import Footer from './Footer'
 import NewRecipe from './NewRecipe'
 import EditRecipe from './EditRecipe'
@@ -57,7 +57,7 @@ export default function App() {
 
       <Route path='/recipe/add' element={<NewRecipe />} />
       <Route path='/recipe/:recipeId/edit' element={<EditRecipe />} />
-      <Route path='/apitest' element={<ApiTest recipeList={recipeList}/>} />
+
       <Route path='*' element={<div className='container'><h3>Page not found!</h3></div>} />
     </Routes>
     <Footer />

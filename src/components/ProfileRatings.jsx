@@ -40,13 +40,10 @@ const ProfileRatings = () => {
 		}
 	})
 	
-
-
-
   return (
 	<>
 		<div id="ratingsAnchor" style={{padding: "30px"}}></div>
-	  	<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5">
+	  	<div className="h-100 d-flex flex-column align-items-center justify-content-center">
 			<h1>Ratings</h1>
 			{ratings}
 		</div>

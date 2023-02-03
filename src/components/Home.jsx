@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import RecipeContext from '../context'
 import './Styles.css'
 
-
 const Home = ({ setSearchInput }) => {
 	// Scroll to top on page load
 	useEffect(() => {setTimeout(() => {window.scrollTo(0, 0)}, 0)}, [])

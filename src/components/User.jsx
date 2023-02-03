@@ -26,21 +26,19 @@ const User = () => {
 
 
 	return (
-		<div className="container text-center" style= {{marginTop:"100px"}}>
+		<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5">
 			<h1>Welcome {loggedInUser.username}</h1>
 
 			<nav className="navbar bg-light">
 				<form className="container-fluid justify-content-center">
-					<HashLink to="#commentsAnchor"><button className="btn btn-outline-success me-2" type="button" >Comments</button></HashLink>
-					<HashLink to="#recipesAnchor"><button className="btn btn-outline-success me-2" type="button" >Recipes</button></HashLink>
-					<HashLink to="#ratingsAnchor"><button className="btn btn-outline-success me-2" type="button" >Ratings</button></HashLink>
 					<HashLink to="#favouritesAnchor"><button className="btn btn-outline-success me-2" type="button" >Favourites</button></HashLink>
+					<HashLink to="#recipesAnchor"><button className="btn btn-outline-success me-2" type="button" >Recipes</button></HashLink>
+					<HashLink to="#commentsAnchor"><button className="btn btn-outline-success me-2" type="button" >Comments</button></HashLink>
+					<HashLink to="#ratingsAnchor"><button className="btn btn-outline-success me-2" type="button" >Ratings</button></HashLink>
 				</form>
 			</nav>
 
-
-
-			<div id="commentsAnchor" style={{padding: "20px"}}></div>
+			<div style={{padding: "20px"}}></div>
 			<div className="container text-center">
 				<ProfileFavourites />
 				<ProfileRecipes />

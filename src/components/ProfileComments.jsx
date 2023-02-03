@@ -38,7 +38,7 @@ const ProfileComments = () => {
 	const comments = Object.values(recipeList).map((recipe,index) => {
 		if (recipe.comment !== null) {
 			return (
-				<div className="container" key={index}>
+				<div className="container" key={index} >
 					<div className="card mb-3">
 						<div className="row g-0">
 							<div className="col-md-2">
@@ -64,7 +64,8 @@ const ProfileComments = () => {
 
 	return (
 	<>
-	  <div className="h-100 d-flex flex-column align-items-center justify-content-center m-5" >
+	<div id="commentsAnchor" style={{padding: "30px"}}></div>
+	  <div className="h-100 d-flex flex-column align-items-center justify-content-center " >
 			<h1>Submitted Comments</h1>
 			{comments}
 		</div>
