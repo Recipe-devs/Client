@@ -26,7 +26,7 @@ const ProfileRatings = () => {
 								</div>
 								<div className="col-md-8 text-start">
 										<div className="card-body">
-											<Link to={`/recipe/${recipe.id}`}>
+											<Link className="card-link" to={`/recipe/${recipe.id}`}>
 												<h4>{recipe.name}</h4>
 												<h4>Rated: {recipe.rating}★️️️️️</h4>
 											</Link>
@@ -42,7 +42,7 @@ const ProfileRatings = () => {
 	
   return (
 	<>
-		<div id="ratingsAnchor" style={{padding: "30px"}}></div>
+		<div id="ratingsAnchor" style={{padding: "20px"}}></div>
 	  	<div className="h-100 d-flex flex-column align-items-center justify-content-center">
 			<h1>Ratings</h1>
 			{ratings}

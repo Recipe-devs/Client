@@ -39,7 +39,7 @@ const ProfileRecipes = () => {
 							</div>
 							<div className="col-md-8 text-start">
 									<div className="card-body">
-										<Link to={`/recipe/${recipe.id}`}>
+										<Link className="card-link" to={`/recipe/${recipe.id}`}>
 											<h4>{recipe.name}</h4>
 											<p>{Object.keys(recipe.comments).length} Comments</p>
 											<p>{(recipe.rating_list.reduce((sum, rating) => sum + rating, 0) / recipe.rating_list.length || 0).toFixed(1)} ★️️️️️</p>
@@ -59,7 +59,7 @@ const ProfileRecipes = () => {
 
 	return (
 	<>
-		<div id="recipesAnchor" style={{padding: "30px"}}></div>
+		<div id="recipesAnchor" style={{padding: "20px"}}></div>
 	  	<div className="h-100 d-flex flex-column align-items-center justify-content-center">
 			<h1>Submitted Recipes</h1>
 			{recipes}

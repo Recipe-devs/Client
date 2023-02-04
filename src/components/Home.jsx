@@ -17,7 +17,7 @@ const Home = ({ setSearchInput }) => {
 
 	//handles search input change
 	const handleChange = (event) => {
-		setSearchInput(event.target.value)
+		setSearchInput(event.target.value.toLowerCase())
 	}
 
 	// Carousel link component
@@ -61,11 +61,11 @@ const Home = ({ setSearchInput }) => {
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+
 					</div>
 					<div className="carousel-inner">
-						<CarouselLink active="active" searchPrefill="chicken" carouselText="CHICKEN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479088/Recipe%20Photos/cisco-lin-YMkX5NjURhk-unsplash_bgi62i.jpg" />
-						<CarouselLink searchPrefill="mexican" carouselText="MEXICAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479373/Recipe%20Photos/mexican-gbb5482fa4_1280_lspk4l.jpg" />
+
+						<CarouselLink active="active" searchPrefill="mexican" carouselText="MEXICAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479373/Recipe%20Photos/mexican-gbb5482fa4_1280_lspk4l.jpg" />
 						<CarouselLink searchPrefill="indian" carouselText="INDIAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479433/Recipe%20Photos/biryani-g849e363c0_1280_dqlpie.jpg" />
 						<CarouselLink searchPrefill="italian" carouselText="ITALIAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675481912/Recipe%20Photos/photo-1595295333158-4742f28fbd85_sc7qqy.jpg" />
 						<CarouselLink searchPrefill="vegetarian" carouselText="VEGETARIAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479742/Recipe%20Photos/casserole-dish-g300399764_1280_wrwf0b.jpg" />

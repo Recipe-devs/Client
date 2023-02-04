@@ -58,9 +58,9 @@ const ProfileComments = () => {
 							</div>
 							<div className="col-md-10 text-start">
 									<div className="card-body">
-											<Link to={`/recipe/${recipe.id}`}>
-												<h4>{recipe.name}</h4>
-												<p>"{recipe.comment}"</p>
+											<Link className="card-link" to={`/recipe/${recipe.id}`}>
+												<h4 >{recipe.name}</h4>
+												<p >"{recipe.comment}"</p>
 											</Link>
 									<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.commentId, recipe._id, recipe.commentIndex)}>Remove</button>
 								</div>
@@ -74,7 +74,7 @@ const ProfileComments = () => {
 
 	return (
 	<>
-	<div id="commentsAnchor" style={{padding: "30px"}}></div>
+	<div id="commentsAnchor" style={{padding: "20px"}}></div>
 	  <div className="h-100 d-flex flex-column align-items-center justify-content-center " >
 			<h1>Submitted Comments</h1>
 			{comments}
