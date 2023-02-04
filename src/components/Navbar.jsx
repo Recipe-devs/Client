@@ -7,7 +7,7 @@ export default ({ setSearchInput }) => {
 	const { loggedInUser } = useContext(RecipeContext)
 
 	const [isOpen, setIsOpen] = useState(false)
-	const handleLinkClick = () => setIsOpen(false)
+	const handleLinkClick = () => {setIsOpen(false),setSearchInput("")}
 	const [navbarClass, setNavbarClass] = useState("")
 	const [isLoggedIn, setIsLoggedIn] = useState(true)
 

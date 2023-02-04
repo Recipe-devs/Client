@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import { Link } from 'react-router-dom'
 import RecipeContext from '../context'
 
@@ -6,11 +6,19 @@ const ProfileComments = () => {
 
 	const { loggedInUser, recipeList, setRecipeList } = useContext(RecipeContext)
 
+	const [commentList, setCommentList] = useState([])
+
 	//on click remove comment from recipeList
-	const handleClick = (commentId, recipeId) => {
-	sendData(commentId, recipeId)
-	setRecipeList(recipeList.filter((recipe) => recipe._id !== recipeId))
-	alert("Comment Deleted!")
+	const handleClick = (commentId, recipeId, commentIndex) => {
+		// pop comment from recipeList by recipeId and commentIndex, then update recipeList using setRecipeList
+		let comment = recipeList.find((recipe) => recipe._id === recipeId)
+		comment.comments.splice(commentIndex, 1)
+		//set commentId  and comment to '' of the recipe that matches the recipeId
+		comment.commentId = ''
+		comment.comment = ''
+		setRecipeList(recipeList)
+		sendData(commentId, recipeId)
+		setCommentList(commentList.filter(recipe => recipe._id !== recipeId))
 	}
 
 	const sendData = async (commentId, recipeId) => {
@@ -27,16 +35,18 @@ const ProfileComments = () => {
 		console.error(error)
 	}}
  
-	// adds the user's comment to the recipe object
+
+	//adds the user's comment to the recipe object
 	for (let i = 0; i < recipeList.length; i++) {
 		let comment = recipeList[i].comments.find((comment) => comment.username.username === loggedInUser.username)
-		recipeList[i].comment = comment ? comment.comment : null
-		recipeList[i].commentId = comment ? comment._id : null
+		recipeList[i].comment = comment ? comment.comment : ""
+		recipeList[i].commentId = comment ? comment._id : ""
+		recipeList[i].commentIndex = comment ? recipeList[i].comments.indexOf(comment) : ""
 	}
 
-	//loop through object if ratings is not null, add to ratings object with recipe name and id
+	//loop through object if ratings is not '', add to ratings object with recipe name and id
 	const comments = Object.values(recipeList).map((recipe,index) => {
-		if (recipe.comment !== null) {
+		if (recipe.comment !== "") {
 			return (
 				<div className="container" key={index} >
 					<div className="card mb-3">
@@ -52,7 +62,7 @@ const ProfileComments = () => {
 												<h4>{recipe.name}</h4>
 												<p>"{recipe.comment}"</p>
 											</Link>
-									<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.commentId, recipe._id)}>Remove</button>
+									<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.commentId, recipe._id, recipe.commentIndex)}>Remove</button>
 								</div>
 							</div>
 						</div>

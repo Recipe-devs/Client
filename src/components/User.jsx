@@ -6,6 +6,7 @@ import ProfileRatings from './ProfileRatings'
 import ProfileComments from './ProfileComments'
 import ProfileRecipes from './ProfileRecipes'
 import { HashLink } from 'react-router-hash-link'
+import LoadingPage from './LoadingPage'
 
 
 const User = () => {
@@ -13,17 +14,20 @@ const User = () => {
 
 	const { loggedInUser, setLoggedInUser, recipeList, setRecipeList } = useContext(RecipeContext)
 
-	let nav = document.getElementsByClassName("navbar")
-	let sticky = nav.offsetTop;
-	window.onscroll = function() {sticker()};
-	function sticker() {
-	if (window.pageYOffset >= sticky) {
-		nav.classList.add("sticky")
-	} else {
-		nav.classList.remove("sticky");
-   }
+	if (recipeList.length === 0) {
+		return (
+		  <LoadingPage />
+		)
 	}
 
+	// window.onscroll = function() {
+	// 	const header = document.querySelector("header")
+	// 	if (window.pageYOffset > header.offsetHeight) {
+	// 	  	header.classList.add("sticky")
+	// 	} else {
+	// 	  	header.classList.remove("sticky")
+	// 	}
+	// }
 
 	return (
 		<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5">

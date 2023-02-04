@@ -9,11 +9,11 @@ const ProfileRatings = () => {
 	// adds the user's ratings to the recipe object
 	for (let i = 0; i < recipeList.length; i++) {
 		let rating = recipeList[i].rating_list.find((rating) => rating.username.username === loggedInUser.username)
-		recipeList[i].rating = rating ? rating.rating : null
+		recipeList[i].rating = rating ? rating.rating : ''
 	}
-	//loop through object if ratings is not null, add to ratings object with recipe name and id
+	//loop through object if ratings is not '', add to ratings object with recipe name and id
 	const ratings = Object.values(recipeList).map((recipe, index) => {
-		if (recipe.rating !== null) {
+		if (recipe.rating !== '') {
 			return (
 				<div className="container text-center" key={index}>
 					<div className="container" key={index}>
