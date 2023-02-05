@@ -12,7 +12,7 @@ export default ({ addComment }) => {
     setComment('')
   }
   return (
-    <div className='container p-3'id='comment-anchor'>
+    <div className='row'id='comment-anchor'>
       <h3>Comment</h3>
       <form onSubmit={handleSubmit}>
         <input

@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
 import RecipeContext from '../context'
+import User from './User'
 
 const recipeList = [
   {
@@ -199,104 +198,61 @@ const loggedInUser = {
     __v: 0
 }
 
-describe('Home Page', () => {
+describe('User Page', () => {
   let container
 
   beforeEach(function () {
     container = render(
       <BrowserRouter>
         <RecipeContext.Provider value={{ recipeList, loggedInUser }}>
-          <App />
+          <User />
         </RecipeContext.Provider>
       </BrowserRouter>
     ).container
   })
 
-  it('Renders the heading and sub-heading correctly', () => {
-    const heading = container.querySelector('p.display-1')
-    const subHeading = container.querySelector('p.display-6')
-
-    expect(heading).toBeDefined()
-    expect(heading).toHaveTextContent('Recipe Realm')
-    expect(subHeading).toBeDefined()
-    expect(subHeading).toHaveTextContent('Nourish your taste buds, one recipe at a time')
+  it('Renders Anchor tags', () => {
+    const favouritesAnchor = container.querySelector('a[href="/#favouritesAnchor"]')
+    const recipesAnchor = container.querySelector('a[href="/#recipesAnchor"]')
+    const commentsAnchor = container.querySelector('a[href="/#commentsAnchor"]')
+    const ratingsAnchor = container.querySelector('a[href="/#ratingsAnchor"]')
+    expect(favouritesAnchor).toBeDefined()
+    expect(recipesAnchor).toBeDefined()
+    expect(commentsAnchor).toBeDefined()
+    expect(ratingsAnchor).toBeDefined()
+    expect(favouritesAnchor).toHaveTextContent('Favourites')
+    expect(recipesAnchor).toHaveTextContent('Recipes')
+    expect(commentsAnchor).toHaveTextContent('Comments')
+    expect(ratingsAnchor).toHaveTextContent('Ratings')
   })
 
-it('Renders the Navbar correctly', () => {
-    const navbarHome = container.querySelector('Link.navbar-brand')
-    const navbarSearch = screen.getByText('Search')
-    const navbarSubmit = screen.getByText('Submit Recipe')
-    const navbarProfile = screen.getByText(/.*\sProfile|Login/);
+  it('Renders headings', () => {
+    const favouritesAnchorTag = screen.getByRole('heading', { name: 'Favourites' })
+    const recipesAnchorTag = screen.getByRole('heading', { name: 'Submitted Recipes' })
+    const commentsAnchorTag = screen.getByRole('heading', { name: 'Submitted Comments' })
+    const ratingsAnchorTag = screen.getByRole('heading', { name: 'Ratings' })
 
-    expect(navbarHome).toBeDefined()
-    expect(navbarSearch).toBeDefined()
-    expect(navbarSubmit).toBeDefined()
-    expect(navbarProfile).toBeDefined()
-    expect(navbarSearch).toHaveTextContent('Search')
-    expect(navbarSubmit).toHaveTextContent('Submit Recipe')
-    expect(navbarProfile).toHaveTextContent(/.*\sProfile|Login/)
-  })
+    const favouritesDiv = favouritesAnchorTag.parentNode
+    const recipesDiv = recipesAnchorTag.parentElement
+    const commentsDiv = commentsAnchorTag.parentElement
+    const ratingsDiv = ratingsAnchorTag.parentElement
 
-  it('Renders the Search bar correctly', () => {
-    const form = container.querySelector('.input-group')
-    const button = form.querySelector('button.btn')
-    const input = form.querySelector('input.form-control')
+    const favouritesHeading = favouritesDiv.querySelector('h1')
+    const recipesHeading = recipesDiv.querySelector('h1')
+    const commentsHeading = commentsDiv.querySelector('h1')
+    const ratingsHeading = ratingsDiv.querySelector('h1')
 
-    expect(form).toBeDefined()
-    expect(button).toBeDefined()
-    expect(button).toHaveTextContent('Go!')
-    expect(input).toBeDefined()
-    expect(input.getAttribute('placeholder')).toEqual('e.g salad')
-  })
+    expect(favouritesAnchorTag).toBeDefined()
+    expect(recipesAnchorTag).toBeDefined()
+    expect(commentsAnchorTag).toBeDefined()
+    expect(ratingsAnchorTag).toBeDefined()
 
-  it('Renders FeaureRecipe component', () => {
-    const loadingDiv = screen.getByText('Loading...')
-    expect(loadingDiv).toBeDefined()
-    expect(loadingDiv).toHaveTextContent('Loading...')
-  })
+    expect(favouritesHeading).toBeDefined()
+    expect(recipesHeading).toBeDefined()
 
-  it('Renders the carousel correctly', () => {
-    const carousel = container.querySelector('.carousel')
-    const innerCarousel = carousel.querySelector('.carousel-inner')
-    expect(carousel).toBeDefined()
-    expect(innerCarousel).toBeDefined()
-
-    const previousButton = carousel.querySelector('.carousel-control-prev')
-    const previousButtonText = previousButton.querySelector('span.visually-hidden')
-    expect(previousButton).toBeDefined()
-    expect(previousButtonText).toBeDefined()
-    expect(previousButtonText).toHaveTextContent('Previous')
-
-    const nextButton = carousel.querySelector('.carousel-control-next')
-    const nextButtonText = nextButton.querySelector('span.visually-hidden')
-    expect(nextButton).toBeDefined()
-    expect(nextButtonText).toBeDefined()
-    expect(nextButtonText).toHaveTextContent('Next')
-  })
-
-  it('Renders the footer correctly', () => {
-    const footer = container.querySelector('footer')
-    expect(footer).toBeDefined()
-    expect(footer).toHaveTextContent('©2023 Recipe Realm')
-  })
-
-  it('Shows the Search page when Search is clicked', async () => {
-    const navbarHome = container.querySelector('Link.navbar-brand')
-    await userEvent.click(navbarHome)
-
-    const heading = container.querySelector('p.display-1')
-    const navbarSearch = screen.getByText('Search')
-    const navbarSubmit = screen.getByText('Submit Recipe')
-    const navbarProfile = screen.getByText(/.*\sProfile|Login/);
-
-    expect(heading).toBeDefined()
-    expect(navbarSearch).toBeDefined()
-    expect(navbarSubmit).toBeDefined()
-    expect(navbarProfile).toBeDefined()
-
-    expect(heading).toHaveTextContent('Recipe Realm')
-    expect(navbarSearch).toHaveTextContent('Search')
-    expect(navbarSubmit).toHaveTextContent('Submit Recipe')
-    expect(navbarProfile).toHaveTextContent(/.*\sProfile|Login/)
+    expect(favouritesHeading).toHaveTextContent('Favourites')
+    expect(recipesHeading).toHaveTextContent('Submitted Recipes')
+    expect(commentsHeading).toHaveTextContent('Submitted Comments')
+    expect(ratingsHeading).toHaveTextContent('Ratings')
   })
 })

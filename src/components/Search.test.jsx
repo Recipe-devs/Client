@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
 import RecipeContext from '../context'
+import Search from './Search'
 
 const recipeList = [
   {
@@ -199,104 +198,93 @@ const loggedInUser = {
     __v: 0
 }
 
-describe('Home Page', () => {
+const searchInput = ''
+
+describe('Search Page', () => {
   let container
 
   beforeEach(function () {
     container = render(
       <BrowserRouter>
         <RecipeContext.Provider value={{ recipeList, loggedInUser }}>
-          <App />
+          <Search searchInput={searchInput} />
         </RecipeContext.Provider>
       </BrowserRouter>
     ).container
   })
 
-  it('Renders the heading and sub-heading correctly', () => {
-    const heading = container.querySelector('p.display-1')
-    const subHeading = container.querySelector('p.display-6')
-
-    expect(heading).toBeDefined()
-    expect(heading).toHaveTextContent('Recipe Realm')
-    expect(subHeading).toBeDefined()
-    expect(subHeading).toHaveTextContent('Nourish your taste buds, one recipe at a time')
+  it('Renders the Search Bar', () => {
+    const searchBar = screen.getByText('Search')
+    expect(searchBar).toBeDefined()
   })
 
-it('Renders the Navbar correctly', () => {
-    const navbarHome = container.querySelector('Link.navbar-brand')
-    const navbarSearch = screen.getByText('Search')
-    const navbarSubmit = screen.getByText('Submit Recipe')
-    const navbarProfile = screen.getByText(/.*\sProfile|Login/);
+  it('Renders the Filters', () => {
+    const cuisineFilter = screen.getByText('Cuisine')
+    const cuisineOption1 = cuisineFilter.querySelector('option[value="Asian"]')
+    const cuisineOption2 = cuisineFilter.querySelector('option[value="Indian"]')
+    const cuisineOption3 = cuisineFilter.querySelector('option[value="Italian"]')
+    const cuisineOption4 = cuisineFilter.querySelector('option[value="Mexican"]')
+    const cuisineOption5 = cuisineFilter.querySelector('option[value="Thai"]')
+    expect(cuisineFilter).toBeDefined()
+    expect(cuisineOption1).toBeDefined()
+    expect(cuisineOption2).toBeDefined()
+    expect(cuisineOption3).toBeDefined()
+    expect(cuisineOption4).toBeDefined()
+    expect(cuisineOption5).toBeDefined()
 
-    expect(navbarHome).toBeDefined()
-    expect(navbarSearch).toBeDefined()
-    expect(navbarSubmit).toBeDefined()
-    expect(navbarProfile).toBeDefined()
-    expect(navbarSearch).toHaveTextContent('Search')
-    expect(navbarSubmit).toHaveTextContent('Submit Recipe')
-    expect(navbarProfile).toHaveTextContent(/.*\sProfile|Login/)
+    const typeFilter = screen.getByText('Type')
+    const typeOption1 = typeFilter.querySelector('option[value="Vegetarian"]')
+    const typeOption2 = typeFilter.querySelector('option[value="Vegan"]')
+    const typeOption3 = typeFilter.querySelector('option[value="Gluten-free"]')
+    const typeOption4 = typeFilter.querySelector('option[value="Soup"]')
+    const typeOption5 = typeFilter.querySelector('option[value="Pasta"]')
+    const typeOption6 = typeFilter.querySelector('option[value="dinner"]')
+    const typeOption7 = typeFilter.querySelector('option[value="chicken"]')
+    const typeOption8 = typeFilter.querySelector('option[value="salad"]')
+    expect(typeFilter).toBeDefined()
+    expect(typeOption1).toBeDefined()
+    expect(typeOption2).toBeDefined()
+    expect(typeOption3).toBeDefined()
+    expect(typeOption4).toBeDefined()
+    expect(typeOption5).toBeDefined()
+    expect(typeOption6).toBeDefined()
+    expect(typeOption7).toBeDefined()
+    expect(typeOption8).toBeDefined()
+    
+    const difficultyFilter = screen.getByText('Difficulty')
+    const difficultyOption1 = difficultyFilter.querySelector('option[value="Easy"]')
+    const difficultyOption2 = difficultyFilter.querySelector('option[value="Medium"]')
+    const difficultyOption3 = difficultyFilter.querySelector('option[value="Hard"]')
+    expect(difficultyFilter).toBeDefined()
+    expect(difficultyOption1).toBeDefined()
+    expect(difficultyOption2).toBeDefined()
+    expect(difficultyOption3).toBeDefined()
+
+    const otherFilter = screen.getByText('Other')
+    const otherOption1 = otherFilter.querySelector('option[value="Soup"]')
+    const otherOption2 = otherFilter.querySelector('option[value="Vegetarian"]')
+    const otherOption3 = otherFilter.querySelector('option[value="Easy"]')
+    const otherOption4 = otherFilter.querySelector('option[value="Pasta"]')
+    const otherOption5 = otherFilter.querySelector('option[value="Italian"]')
+    expect(otherFilter).toBeDefined()
+    expect(otherOption1).toBeDefined()
+    expect(otherOption2).toBeDefined()
+    expect(otherOption3).toBeDefined()
+    expect(otherOption4).toBeDefined()
+    expect(otherOption5).toBeDefined()
   })
 
-  it('Renders the Search bar correctly', () => {
-    const form = container.querySelector('.input-group')
-    const button = form.querySelector('button.btn')
-    const input = form.querySelector('input.form-control')
+  it('Renders the Recipe List', () => {
+    const recipeOne = screen.getByText(recipeList[0].name)
+    const recipeTwo = screen.getByText(recipeList[1].name)
+    const recipeOneImg = container.querySelector(`img[src="${recipeList[0].image}"]`)
+    const recipeTwoImg = container.querySelector(`img[src="${recipeList[1].image}"]`)
 
-    expect(form).toBeDefined()
-    expect(button).toBeDefined()
-    expect(button).toHaveTextContent('Go!')
-    expect(input).toBeDefined()
-    expect(input.getAttribute('placeholder')).toEqual('e.g salad')
-  })
-
-  it('Renders FeaureRecipe component', () => {
-    const loadingDiv = screen.getByText('Loading...')
-    expect(loadingDiv).toBeDefined()
-    expect(loadingDiv).toHaveTextContent('Loading...')
-  })
-
-  it('Renders the carousel correctly', () => {
-    const carousel = container.querySelector('.carousel')
-    const innerCarousel = carousel.querySelector('.carousel-inner')
-    expect(carousel).toBeDefined()
-    expect(innerCarousel).toBeDefined()
-
-    const previousButton = carousel.querySelector('.carousel-control-prev')
-    const previousButtonText = previousButton.querySelector('span.visually-hidden')
-    expect(previousButton).toBeDefined()
-    expect(previousButtonText).toBeDefined()
-    expect(previousButtonText).toHaveTextContent('Previous')
-
-    const nextButton = carousel.querySelector('.carousel-control-next')
-    const nextButtonText = nextButton.querySelector('span.visually-hidden')
-    expect(nextButton).toBeDefined()
-    expect(nextButtonText).toBeDefined()
-    expect(nextButtonText).toHaveTextContent('Next')
-  })
-
-  it('Renders the footer correctly', () => {
-    const footer = container.querySelector('footer')
-    expect(footer).toBeDefined()
-    expect(footer).toHaveTextContent('©2023 Recipe Realm')
-  })
-
-  it('Shows the Search page when Search is clicked', async () => {
-    const navbarHome = container.querySelector('Link.navbar-brand')
-    await userEvent.click(navbarHome)
-
-    const heading = container.querySelector('p.display-1')
-    const navbarSearch = screen.getByText('Search')
-    const navbarSubmit = screen.getByText('Submit Recipe')
-    const navbarProfile = screen.getByText(/.*\sProfile|Login/);
-
-    expect(heading).toBeDefined()
-    expect(navbarSearch).toBeDefined()
-    expect(navbarSubmit).toBeDefined()
-    expect(navbarProfile).toBeDefined()
-
-    expect(heading).toHaveTextContent('Recipe Realm')
-    expect(navbarSearch).toHaveTextContent('Search')
-    expect(navbarSubmit).toHaveTextContent('Submit Recipe')
-    expect(navbarProfile).toHaveTextContent(/.*\sProfile|Login/)
+    expect(recipeOneImg.getAttribute('alt')).toEqual(recipeList[0].name)
+    expect(recipeTwoImg.getAttribute('alt')).toEqual(recipeList[1].name)
+    expect(recipeOne).toBeDefined()
+    expect(recipeTwo).toBeDefined()
+    expect(recipeOneImg).toBeDefined()
+    expect(recipeTwoImg).toBeDefined()
   })
 })

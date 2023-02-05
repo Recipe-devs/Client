@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import RecipeContext from '../context'
+import NewRecipe from './NewRecipe'
 
 const recipeList = [
   {
@@ -199,104 +200,45 @@ const loggedInUser = {
     __v: 0
 }
 
-describe('Home Page', () => {
+describe('Add Recipe Page', () => {
   let container
 
   beforeEach(function () {
     container = render(
       <BrowserRouter>
         <RecipeContext.Provider value={{ recipeList, loggedInUser }}>
-          <App />
+          <NewRecipe />
         </RecipeContext.Provider>
       </BrowserRouter>
     ).container
   })
-
-  it('Renders the heading and sub-heading correctly', () => {
-    const heading = container.querySelector('p.display-1')
-    const subHeading = container.querySelector('p.display-6')
-
+  it('Renders the Heading', () => {
+    const heading = container.querySelector('h1')
     expect(heading).toBeDefined()
-    expect(heading).toHaveTextContent('Recipe Realm')
-    expect(subHeading).toBeDefined()
-    expect(subHeading).toHaveTextContent('Nourish your taste buds, one recipe at a time')
+    expect(heading).toHaveTextContent('Submit a new recipe')
   })
+  it('Renders the form', () => {
+    const nameForm = container.querySelector('label[for="name"]')
+    const descriptionForm = container.querySelector('label[for="description"]')
+    const tagsForm = container.querySelector('label[for="tags"]')
+    const imageForm = container.querySelector('label[for="image"]')
+    const ingredientsForm = container.querySelector('label[for="ingredients"]')
+    const methodForm = container.querySelector('label[for="method"]')
+    const submitButton = container.querySelector('input[type="submit"]')
 
-it('Renders the Navbar correctly', () => {
-    const navbarHome = container.querySelector('Link.navbar-brand')
-    const navbarSearch = screen.getByText('Search')
-    const navbarSubmit = screen.getByText('Submit Recipe')
-    const navbarProfile = screen.getByText(/.*\sProfile|Login/);
+    expect(nameForm).toBeDefined()
+    expect(descriptionForm).toBeDefined()
+    expect(tagsForm).toBeDefined()
+    expect(imageForm).toBeDefined()
+    expect(ingredientsForm).toBeDefined()
+    expect(methodForm).toBeDefined()
+    expect(submitButton).toBeDefined()
 
-    expect(navbarHome).toBeDefined()
-    expect(navbarSearch).toBeDefined()
-    expect(navbarSubmit).toBeDefined()
-    expect(navbarProfile).toBeDefined()
-    expect(navbarSearch).toHaveTextContent('Search')
-    expect(navbarSubmit).toHaveTextContent('Submit Recipe')
-    expect(navbarProfile).toHaveTextContent(/.*\sProfile|Login/)
-  })
-
-  it('Renders the Search bar correctly', () => {
-    const form = container.querySelector('.input-group')
-    const button = form.querySelector('button.btn')
-    const input = form.querySelector('input.form-control')
-
-    expect(form).toBeDefined()
-    expect(button).toBeDefined()
-    expect(button).toHaveTextContent('Go!')
-    expect(input).toBeDefined()
-    expect(input.getAttribute('placeholder')).toEqual('e.g salad')
-  })
-
-  it('Renders FeaureRecipe component', () => {
-    const loadingDiv = screen.getByText('Loading...')
-    expect(loadingDiv).toBeDefined()
-    expect(loadingDiv).toHaveTextContent('Loading...')
-  })
-
-  it('Renders the carousel correctly', () => {
-    const carousel = container.querySelector('.carousel')
-    const innerCarousel = carousel.querySelector('.carousel-inner')
-    expect(carousel).toBeDefined()
-    expect(innerCarousel).toBeDefined()
-
-    const previousButton = carousel.querySelector('.carousel-control-prev')
-    const previousButtonText = previousButton.querySelector('span.visually-hidden')
-    expect(previousButton).toBeDefined()
-    expect(previousButtonText).toBeDefined()
-    expect(previousButtonText).toHaveTextContent('Previous')
-
-    const nextButton = carousel.querySelector('.carousel-control-next')
-    const nextButtonText = nextButton.querySelector('span.visually-hidden')
-    expect(nextButton).toBeDefined()
-    expect(nextButtonText).toBeDefined()
-    expect(nextButtonText).toHaveTextContent('Next')
-  })
-
-  it('Renders the footer correctly', () => {
-    const footer = container.querySelector('footer')
-    expect(footer).toBeDefined()
-    expect(footer).toHaveTextContent('©2023 Recipe Realm')
-  })
-
-  it('Shows the Search page when Search is clicked', async () => {
-    const navbarHome = container.querySelector('Link.navbar-brand')
-    await userEvent.click(navbarHome)
-
-    const heading = container.querySelector('p.display-1')
-    const navbarSearch = screen.getByText('Search')
-    const navbarSubmit = screen.getByText('Submit Recipe')
-    const navbarProfile = screen.getByText(/.*\sProfile|Login/);
-
-    expect(heading).toBeDefined()
-    expect(navbarSearch).toBeDefined()
-    expect(navbarSubmit).toBeDefined()
-    expect(navbarProfile).toBeDefined()
-
-    expect(heading).toHaveTextContent('Recipe Realm')
-    expect(navbarSearch).toHaveTextContent('Search')
-    expect(navbarSubmit).toHaveTextContent('Submit Recipe')
-    expect(navbarProfile).toHaveTextContent(/.*\sProfile|Login/)
+    expect(nameForm).toHaveTextContent('Recipe Name')
+    expect(descriptionForm).toHaveTextContent('Description')
+    expect(tagsForm).toHaveTextContent('Recipe Tags (separated by semi-colons)')
+    expect(imageForm).toHaveTextContent('Image (URL format, default image applied if none entered)')
+    expect(ingredientsForm).toHaveTextContent('Ingredients (separated by semi-colons)')
+    expect(methodForm).toHaveTextContent('Method (separated by semi-colons; numbers will be automatically added)')
   })
 })

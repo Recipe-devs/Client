@@ -36,39 +36,38 @@ const Search = ({ searchInput, setSearchInput }) => {
 		.filter(recipe => doesTagExist(recipe, filter2))
 		.filter(recipe => doesTagExist(recipe, filter3))
 		.filter(recipe => doesTagExist(recipe, filter4))
-		
 
   return (
     <>
-		{/* Centre whole page */}
-		<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5">
+			{/* Centre whole page */}
+			<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5">
 
-			{/* Search bar */}
-			<div className="form-floating m-3 mt-5 w-75 ">
-				{/* Need to have placeholder as uses it as a pseudoelement */}
-				<input className="form-control" id="floatingInput" placeholder="samplesearchterm" onChange={(evt) => setSearchInput(evt.target.value)} value={searchInput}/>
-				<label htmlFor="floatingInput">Search</label>
-			</div>
-			
-			{/* Filter dropdowns */}
-			<SearchFilters setFilter1={setFilter1} setFilter2={setFilter2} setFilter3={setFilter3} setFilter4={setFilter4} />
+				{/* Search bar */}
+				<div className="form-floating m-3 mt-5 w-75 ">
+					{/* Need to have placeholder as uses it as a pseudoelement */}
+					<input className="form-control" id="floatingInput" placeholder="samplesearchterm" onChange={(evt) => setSearchInput(evt.target.value)} value={searchInput} />
+					<label htmlFor="floatingInput">Search</label>
+				</div>
+				
+				{/* Filter dropdowns */}
+				<SearchFilters setFilter1={setFilter1} setFilter2={setFilter2} setFilter3={setFilter3} setFilter4={setFilter4} />
 
-			{/* List of recipes/display recipes */}
-			<div className="container d-flex flex-wrap align-items-center justify-content-center mt-5 w-75">
-				<div className="row g-4 g-lg-6">
-					{filterrecipes.map((recipe) => (
-						<div className="col-12 col-md-6 col-lg-4 col-xl-3 p-1 p-lg-2 figurediv" key={recipe.id}>
-							<Link to={`/recipe/${recipe.id}`} style={{color: "black"}}>
-								<figure className="figure">
-									<img src={recipe.image} className="figure-img img-fluid rounded" alt={recipe.name} />
-									<h4>{recipe.name}</h4>
-								</figure>
-							</Link>
-						</div>
-					))}
+				{/* List of recipes/display recipes */}
+				<div className="container d-flex flex-wrap align-items-center justify-content-center mt-5 w-75">
+					<div className="row g-4 g-lg-6">
+						{filterrecipes.map((recipe) => (
+							<div className="col-12 col-md-6 col-lg-4 col-xl-3 p-1 p-lg-2 figurediv" key={recipe.id}>
+								<Link to={`/recipe/${recipe.id}`} style={{color: "black"}}>
+									<figure className="figure">
+										<img src={recipe.image} className="figure-img img-fluid rounded" alt={recipe.name} />
+										<h4>{recipe.name}</h4>
+									</figure>
+								</Link>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
-		</div>
     </>
   )
 }

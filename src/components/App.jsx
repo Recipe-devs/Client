@@ -53,7 +53,7 @@ export default function App() {
         <Route path='/recipe/add' element={<NewRecipe />} />
         <Route path='/recipe/:recipeId/edit' element={<EditRecipe />} />
 
-        <Route path='*' element={<div className='container'><h3>Page not found!</h3></div>} />
+        <Route path='*' element={<div className='mh-100 d-flex justify-content-center align-items-center m-5 p-5' style={{height: "80vh"}}><h3>Page not found!</h3></div>} />
       </Routes>
       <Footer />
     </RecipeContext.Provider>
