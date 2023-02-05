@@ -41,7 +41,7 @@ const ProfileRecipes = () => {
 									<div className="card-body">
 										<Link className="card-link" to={`/recipe/${recipe.id}`}>
 											<h4>{recipe.name}</h4>
-											<p>{Object.keys(recipe.comments).length} Comments</p>
+											<p><strong>{Object.keys(recipe.comments).length}</strong> Comments received</p>
 										</Link>
 										<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.id)}>Remove</button>
 										<Link to={`/recipe/${recipe.id}/edit`}>

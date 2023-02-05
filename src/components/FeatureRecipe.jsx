@@ -28,7 +28,7 @@ export default () => {
 
   return (
     <>
-        <div className="row d-flex align-items-center m-5 featured-recipe">
+        <div className="row d-flex align-items-center my-5 mx-1 featured-recipe">
             <div className="col-lg-6 ">
                 <Link to={`/recipe/${featureRecipe.id}`}>
                 <img src={featureRecipe.image} className="img-fluid rounded featured-img" alt="place holder" />

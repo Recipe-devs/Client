@@ -52,7 +52,7 @@ const ProfileFavourites = () => {
 								<div className="card-body">
 										<Link className="card-link" to={`/recipe/${recipe.id}`}>
 											<h4>{recipe.name}</h4>
-											<p>{recipe.description}</p>
+											<p><strong>Description: </strong>{recipe.description}</p>
 										</Link>
 									<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.id)}>Remove</button>
 							</div>
@@ -67,7 +67,7 @@ const ProfileFavourites = () => {
   	return (
 	<>
 		<div id="favouritesAnchor" style={{padding: "20px"}}></div>
-		<div className="h-100 d-flex flex-column align-items-center justify-content-center" >
+		<div className="h-100 d-flex flex-column align-items-center justify-content-center">
 			<h1>Favourites</h1>
 			{favourites}
 		</div>

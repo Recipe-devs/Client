@@ -61,7 +61,7 @@ const ProfileComments = () => {
 									<div className="card-body">
 											<Link className="card-link" to={`/recipe/${recipe.id}`}>
 												<h4 >{recipe.name}</h4>
-												<p >"{recipe.comment}"</p>
+												<p ><strong>Comment: </strong>"{recipe.comment}"</p>
 											</Link>
 									<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.commentId, recipe._id, recipe.commentIndex)}>Remove</button>
 								</div>

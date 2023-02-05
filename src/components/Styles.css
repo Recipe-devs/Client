@@ -161,7 +161,7 @@ a.featured-recipe-link:visited{
 .carousel-control-prev, .carousel-control-next {
     /*size */
     height: 40vh;
-    width: 5vw;
+    width: 10vw;
     min-width: 2rem;
     /*color */
     background: #5e5e5e none repeat scroll 0 0;

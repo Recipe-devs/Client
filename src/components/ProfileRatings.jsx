@@ -28,7 +28,7 @@ const ProfileRatings = () => {
 										<div className="card-body">
 											<Link className="card-link" to={`/recipe/${recipe.id}`}>
 												<h4>{recipe.name}</h4>
-												<h4>Rated: {recipe.rating}★️️️️️</h4>
+												<p><strong>Rated:</strong> {recipe.rating}★️️️️️</p>
 											</Link>
 									</div>
 								</div>

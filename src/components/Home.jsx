@@ -32,7 +32,7 @@ const Home = ({ setSearchInput }) => {
 	)}
 
  	return (
-		<div className="container-fluid landing">
+		<div className="container-fluid landing" style={{padding: "0px"}}>
 			{/* main landing */}
 			<div className="text-center hero">
 				{/* backdrop image */}
@@ -55,7 +55,7 @@ const Home = ({ setSearchInput }) => {
 			<FeatureRecipe />
 			{/* carousel */}
 			<div>
-				<div id="carouselExampleIndicators" className="carousel slide m-5">
+				<div id="carouselExampleIndicators" className="carousel slide my-5 mx-1">
 					<div className="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
