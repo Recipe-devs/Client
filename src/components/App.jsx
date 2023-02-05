@@ -18,7 +18,7 @@ export default function App() {
   
   useEffect(() => {
     async function getRecipeList() {
-      const res = await fetch(`https://server-production-6a0e.up.railway.app/recipes/`)
+      const res = await fetch('https://server-production-6a0e.up.railway.app/recipes/')
       const data = await res.json()
       setRecipeList(data) 
     }
@@ -28,10 +28,8 @@ export default function App() {
   //Search input state  
   const [searchInput, setSearchInput] = useState("")
 
-
   //user state
   const [loggedInUser, setLoggedInUser] = useState("WhiskWizard")
-  
 
   useEffect (() => {
     async function getUser() {
@@ -42,26 +40,22 @@ export default function App() {
     getUser()
     },[])
 
-
-
-
-
   return (
     <>
     <RecipeContext.Provider value={{ recipeList, setRecipeList, loggedInUser, setLoggedInUser }}>
-    <Navbar setSearchInput={setSearchInput} />
-    <Routes>
-      <Route path='/' element={<Home setSearchInput={setSearchInput} />} />
-      <Route path='/search' element={<Search searchInput={searchInput} setSearchInput={setSearchInput} />} />
-      <Route path='/user' element={<User />} />
-      <Route path='/recipe/:recipeId' element={<Recipe />} />
+      <Navbar setSearchInput={setSearchInput} />
+      <Routes>
+        <Route path='/' element={<Home setSearchInput={setSearchInput} />} />
+        <Route path='/search' element={<Search searchInput={searchInput} setSearchInput={setSearchInput} />} />
+        <Route path='/user' element={<User />} />
+        <Route path='/recipe/:recipeId' element={<Recipe />} />
 
-      <Route path='/recipe/add' element={<NewRecipe />} />
-      <Route path='/recipe/:recipeId/edit' element={<EditRecipe />} />
+        <Route path='/recipe/add' element={<NewRecipe />} />
+        <Route path='/recipe/:recipeId/edit' element={<EditRecipe />} />
 
-      <Route path='*' element={<div className='container'><h3>Page not found!</h3></div>} />
-    </Routes>
-    <Footer />
+        <Route path='*' element={<div className='container'><h3>Page not found!</h3></div>} />
+      </Routes>
+      <Footer />
     </RecipeContext.Provider>
     </>
   )

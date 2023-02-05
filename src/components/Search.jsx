@@ -30,7 +30,8 @@ const Search = ({ searchInput, setSearchInput }) => {
 
 	// Filter recipes
 	var filterrecipes = recipeList
-		.filter(recipe => recipe.name.includes(searchInput.toLowerCase()) || recipe.description.includes(searchInput.toLowerCase()) || doesTagExist(recipe, searchInput.toLowerCase()))
+		// .filter(recipe => recipe.name.includes(searchInput.toLowerCase()) || recipe.description.includes(searchInput.toLowerCase()) || doesTagExist(recipe, searchInput.toLowerCase()))
+		.filter(recipe => recipe.name.toLowerCase().includes(searchInput.toLowerCase()) || recipe.description.toLowerCase().includes(searchInput.toLowerCase()) || doesTagExist(recipe, searchInput.toLowerCase()))
 		.filter(recipe => doesTagExist(recipe, filter1))
 		.filter(recipe => doesTagExist(recipe, filter2))
 		.filter(recipe => doesTagExist(recipe, filter3))

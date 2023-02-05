@@ -43,7 +43,7 @@ const Home = ({ setSearchInput }) => {
 				<div className="col-lg-6 mx-auto">
 					<div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
 						<div className="input-group mb-3 ">
-							<input className="form-control" id="floatingInput" placeholder="Search" onChange={handleChange}  />
+							<input className="form-control" id="floatingInput" placeholder="e.g salad" onChange={handleChange}  />
 							<Link to="/search">
 							<button className="btn btn-outline-secondary" type="button" id="button-addon2" style={{backgroundColor: "lightGray", }}>Go!</button>
 							</Link>
@@ -64,7 +64,6 @@ const Home = ({ setSearchInput }) => {
 
 					</div>
 					<div className="carousel-inner">
-
 						<CarouselLink active="active" searchPrefill="mexican" carouselText="MEXICAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479373/Recipe%20Photos/mexican-gbb5482fa4_1280_lspk4l.jpg" />
 						<CarouselLink searchPrefill="indian" carouselText="INDIAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675479433/Recipe%20Photos/biryani-g849e363c0_1280_dqlpie.jpg" />
 						<CarouselLink searchPrefill="italian" carouselText="ITALIAN" imgURL="https://res.cloudinary.com/dzz3meeb6/image/upload/v1675481912/Recipe%20Photos/photo-1595295333158-4742f28fbd85_sc7qqy.jpg" />
@@ -87,5 +86,3 @@ const Home = ({ setSearchInput }) => {
 }
 
 export default Home
-
-

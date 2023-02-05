@@ -19,7 +19,7 @@ const ProfileFavourites = () => {
 
   const sendData = async (favourites) => {
     try {
-      const response = await fetch(`http://server-production-6a0e.up.railway.app/users/${loggedInUser._id}/favourites`, {
+      const response = await fetch(`https://server-production-6a0e.up.railway.app/users/${loggedInUser._id}/favourites`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

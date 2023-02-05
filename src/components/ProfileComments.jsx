@@ -19,6 +19,7 @@ const ProfileComments = () => {
 		setRecipeList(recipeList)
 		sendData(commentId, recipeId)
 		setCommentList(commentList.filter(recipe => recipe._id !== recipeId))
+		alert("Comment deleted!")
 	}
 
 	const sendData = async (commentId, recipeId) => {

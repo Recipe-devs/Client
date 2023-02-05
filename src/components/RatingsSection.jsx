@@ -6,7 +6,7 @@ export default ({ recipeRating, recipe }) => {
   // For updating state with changes
   const { recipeList, setRecipeList, loggedInUser } = useContext(RecipeContext)
 
-  const averageRating = Math.round(recipeRating.reduce((acc, curr) => acc + curr.rating, 0) / recipeRating.length)
+  const averageRating = Math.round((recipeRating.reduce((acc, curr) => acc + curr.rating, 0) / recipeRating.length) * 10 ) / 10
   const recipeId = recipe._id
 
   const [rating, setRating] = useState(averageRating)
@@ -79,7 +79,7 @@ export default ({ recipeRating, recipe }) => {
 
 const stars = []
   for (let i = 0; i < 5; i++) {
-    if (i < rating) {
+    if (i < Math.round(rating)) {
       stars.push(<span style={{ cursor: 'pointer'}} key={i} onClick={handleClick}>★️️️️️</span>)
     } else {
       stars.push(<span style={{ cursor: 'pointer'}} key={i} onClick={handleClick}>☆</span>)
