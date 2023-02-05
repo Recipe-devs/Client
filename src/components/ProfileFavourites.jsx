@@ -44,7 +44,9 @@ const ProfileFavourites = () => {
 				<div className="card mb-3">
 					<div className="row g-0">
 						<div className="col-md-2">
+							<Link className="card-link" to={`/recipe/${recipe.id}`}>
 							<img src={recipe.image} className="img-fluid rounded-start my-3 " alt={recipe.name} />
+							</Link>
 						</div>
 						<div className="col-md-8 text-start">
 								<div className="card-body">

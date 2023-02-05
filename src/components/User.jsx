@@ -8,7 +8,6 @@ import ProfileRecipes from './ProfileRecipes'
 import { HashLink } from 'react-router-hash-link'
 import LoadingPage from './LoadingPage'
 
-
 const User = () => {
 	useEffect(() => { window.scrollTo(0, 0) }, [])
 
@@ -20,24 +19,15 @@ const User = () => {
 		)
 	}
 
-	// window.onscroll = function() {
-	// 	const header = document.querySelector("header")
-	// 	if (window.pageYOffset > header.offsetHeight) {
-	// 	  	header.classList.add("sticky")
-	// 	} else {
-	// 	  	header.classList.remove("sticky")
-	// 	}
-	// }
-
 	return (
-		<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5">
+		<div className="h-100 d-flex flex-column align-items-center justify-content-center m-5" >
 
 			<nav className="navbar user-home">
 				<form className="container-fluid justify-content-center btn">
-					<HashLink to="#favouritesAnchor"><button className="btn btn-outline-success me-2" type="button" >Favourites</button></HashLink>
-					<HashLink to="#recipesAnchor"><button className="btn btn-outline-success me-2" type="button" >Recipes</button></HashLink>
-					<HashLink to="#commentsAnchor"><button className="btn btn-outline-success me-2" type="button" >Comments</button></HashLink>
-					<HashLink to="#ratingsAnchor"><button className="btn btn-outline-success me-2" type="button" >Ratings</button></HashLink>
+					<HashLink to="#favouritesAnchor"> <button className="btn btn-success m-1 btn-sm" type="button" >Favourites</button> </HashLink>
+					<HashLink to="#recipesAnchor"> <button className="btn btn-success m-1 btn-sm" type="button" >Recipes</button> </HashLink>
+					<HashLink to="#commentsAnchor"> <button className="btn btn-success mx-1 btn-sm" type="button" >Comments</button> </HashLink>
+					<HashLink to="#ratingsAnchor"> <button className="btn btn-success mx-1 btn-sm" type="button" >Ratings</button> </HashLink>
 				</form>
 			</nav>
 			<div style={{padding: "40px"}}></div>

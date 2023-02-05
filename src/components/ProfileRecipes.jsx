@@ -42,7 +42,6 @@ const ProfileRecipes = () => {
 										<Link className="card-link" to={`/recipe/${recipe.id}`}>
 											<h4>{recipe.name}</h4>
 											<p>{Object.keys(recipe.comments).length} Comments</p>
-											<p>{(recipe.rating_list.reduce((sum, rating) => sum + rating, 0) / recipe.rating_list.length || 0).toFixed(1)} ★️️️️️</p>
 										</Link>
 										<button type="button" className="btn btn-danger" onClick={() => handleClick(recipe.id)}>Remove</button>
 										<Link to={`/recipe/${recipe.id}/edit`}>
